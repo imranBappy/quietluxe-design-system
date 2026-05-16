@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" class="accent-sage">
+<head>
+<meta charset="utf-8" />
+<title>Quietluxe — Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<style>
+  body { margin: 0; }
+  .btn { font-family: var(--font-sans); }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root" data-screen-label="Dashboard"></div>
+<script type="text/babel" src="Sidebar.jsx"></script>
+<script type="text/babel" src="Topbar.jsx"></script>
+<script type="text/babel" src="StatCard.jsx"></script>
+<script type="text/babel" src="WeeklyDigest.jsx"></script>
+<script type="text/babel" src="DataTable.jsx"></script>
+<script type="text/babel">
+function App() {
+  const [active, setActive] = React.useState('home');
+  React.useEffect(() => {
+    if (window.lucide) window.lucide.createIcons();
+  });
+
+  return (
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
+      <Sidebar active={active} onNav={setActive} />
+      <main style={{ flex: 1, minWidth: 0 }}>
+        <Topbar />
+        <div style={{ padding: '40px 48px 80px', maxWidth: 1280 }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, marginBottom: 56 }}>
+            <div style={{ minWidth: 0 }}>
+              <div className="label" style={{ marginBottom: 8 }}>Tuesday · May 5</div>
+              <h1 style={{
+                fontFamily: 'var(--font-serif)', fontSize: 44, lineHeight: 1.15,
+                letterSpacing: '-0.02em', fontWeight: 600, margin: 0, paddingBottom: 4, color: 'var(--fg)',
+              }}>
+                Good morning, <span style={{ fontStyle: 'italic' }}>Mira</span>.
+              </h1>
+            </div>
+            <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+              <button className="btn btn-secondary" style={{ padding: '8px 14px', fontSize: 13 }}>
+                <i data-lucide="download" style={{ width: 14, height: 14, marginRight: 6 }}></i>
+                Export
+              </button>
+              <button className="btn btn-primary" style={{ padding: '8px 16px', fontSize: 13 }}>
+                <i data-lucide="plus" style={{ width: 14, height: 14, marginRight: 6 }}></i>
+                Add note
+              </button>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 }}>
+            <StatCard n="01" label="Revenue · May" value="$84,210" delta="+12%"
+              sparkPath="M0 42 C 30 38, 60 30, 100 24 S 160 14, 200 8" />
+            <StatCard n="02" label="New customers" value="14" delta="+3"
+              sparkPath="M0 36 C 30 34, 60 32, 100 24 S 160 18, 200 12" />
+            <StatCard n="03" label="Active subscriptions" value="382" delta="+1.2%"
+              sparkPath="M0 30 C 30 30, 60 26, 100 22 S 160 14, 200 16" />
+            <StatCard n="04" label="Churn" value="0.8%" delta="−0.2%" deltaPositive={true}
+              sparkPath="M0 14 C 30 18, 60 22, 100 26 S 160 32, 200 38" />
+          </div>
+
+          <div style={{ marginBottom: 32 }}>
+            <WeeklyDigest />
+          </div>
+
+          <DataTable />
+        </div>
+      </main>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>setTimeout(() => lucide.createIcons(), 200);</script>
+</body>
+</html>

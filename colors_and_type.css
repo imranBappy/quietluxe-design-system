@@ -1,0 +1,279 @@
+/* ──────────────────────────────────────────────────────────────
+   Quietluxe Design System — Tokens
+   Modern · Posh · Cool · Refreshing
+   ────────────────────────────────────────────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ───────── Neutrals (Light) ───────── */
+  --bg:               #FAFAF7;   /* warm paper */
+  --surface:          #FFFFFF;   /* card */
+  --surface-elevated: #F4F3EE;   /* cream */
+  --border:           #E8E6E0;   /* hairline */
+  --border-strong:    #D8D5CC;   /* hover/active */
+
+  --fg:               #1A1A1A;   /* near-black */
+  --fg-muted:         #6B6B6B;   /* graphite */
+  --fg-subtle:        #9B9B9B;   /* soft gray */
+
+  /* ───────── Accents (rotate one per project) ───────── */
+  --accent-sage:       #87A96B;
+  --accent-terracotta: #C97B5C;
+  --accent-midnight:   #1E2A4A;
+  --accent-champagne:  #D4AF7A;
+  --accent-lavender:   #B5A8D4;
+
+  /* Default accent — sage */
+  --accent:            var(--accent-sage);
+  --accent-fg:         #FFFFFF;
+
+  /* ───────── Type families ───────── */
+  --font-serif: "Fraunces", "Playfair Display", "Instrument Serif", Georgia, serif;
+  --font-sans:  "Inter", "Geist", "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:  "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+
+  /* ───────── Type scale (1.25 modular) ───────── */
+  --fz-hero:  72px;
+  --fz-h1:    48px;
+  --fz-h2:    32px;
+  --fz-h3:    22px;
+  --fz-body:  16px;
+  --fz-small: 13px;
+
+  --lh-hero:  1.05;
+  --lh-h1:    1.1;
+  --lh-h2:    1.2;
+  --lh-h3:    1.3;
+  --lh-body:  1.6;
+  --lh-small: 1.5;
+
+  --tr-hero:  -0.03em;
+  --tr-label: 0.12em;   /* uppercase labels */
+
+  --fw-body:    400;
+  --fw-ui:      500;
+  --fw-heading: 600;
+
+  /* ───────── Spacing (8px base) ───────── */
+  --sp-1:   8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  48px;
+  --sp-6:  64px;
+  --sp-7:  96px;
+  --sp-8: 128px;
+
+  /* ───────── Layout ───────── */
+  --container: 1200px;
+  --section-y-desktop: 96px;
+  --section-y-mobile:  64px;
+
+  /* ───────── Radius ───────── */
+  --r-input:  4px;
+  --r-button: 8px;
+  --r-card:  12px;
+  --r-pill: 999px;
+
+  /* ───────── Elevation (whisper only) ───────── */
+  --shadow-none: none;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-pop:  0 8px 24px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+
+  /* ───────── Motion ───────── */
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   150ms;
+  --dur:        220ms;
+  --dur-slow:   320ms;
+}
+
+/* ───────── Dark mode ───────── */
+:root[data-theme="dark"],
+.theme-dark {
+  --bg:               #0E0E0C;
+  --surface:          #1A1A18;
+  --surface-elevated: #232320;
+  --border:           #2A2A26;
+  --border-strong:    #3A3A35;
+  --fg:               #F4F3EE;
+  --fg-muted:         #A8A8A0;
+  --fg-subtle:        #777771;
+  --accent-fg:        #0E0E0C;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-pop:  0 8px 24px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ───────── Accent themes (apply on root or section) ───────── */
+.accent-sage       { --accent: var(--accent-sage); }
+.accent-terracotta { --accent: var(--accent-terracotta); }
+.accent-midnight   { --accent: var(--accent-midnight); }
+.accent-champagne  { --accent: var(--accent-champagne); --accent-fg: #1A1A1A; }
+.accent-lavender   { --accent: var(--accent-lavender);  --accent-fg: #1A1A1A; }
+
+/* ──────────────────────────────────────────────────────────────
+   Semantic element styles
+   ────────────────────────────────────────────────────────────── */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fz-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.hero, .display {
+  font-family: var(--font-serif);
+  font-size: var(--fz-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: var(--tr-hero);
+  font-weight: var(--fw-heading);
+}
+
+h1, .h1 {
+  font-family: var(--font-serif);
+  font-size: var(--fz-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: -0.02em;
+  font-weight: var(--fw-heading);
+}
+
+h2, .h2 {
+  font-family: var(--font-serif);
+  font-size: var(--fz-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: -0.015em;
+  font-weight: var(--fw-heading);
+}
+
+h3, .h3 {
+  font-family: var(--font-serif);
+  font-size: var(--fz-h3);
+  line-height: var(--lh-h3);
+  font-weight: var(--fw-heading);
+}
+
+p, .body {
+  font-size: var(--fz-body);
+  line-height: var(--lh-body);
+  color: var(--fg);
+}
+
+.muted { color: var(--fg-muted); }
+.subtle { color: var(--fg-subtle); }
+
+.small {
+  font-size: var(--fz-small);
+  line-height: var(--lh-small);
+}
+
+.label {
+  font-size: var(--fz-small);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: var(--fw-ui);
+}
+
+.italic-emphasis { font-style: italic; font-family: var(--font-serif); }
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+hr, .rule {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--sp-4) 0;
+}
+
+/* Editorial numbered marker — "01" */
+.numeral {
+  font-family: var(--font-serif);
+  font-feature-settings: "tnum" 1;
+  color: var(--fg-subtle);
+  font-size: var(--fz-small);
+  letter-spacing: 0.04em;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Buttons
+   ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-family: var(--font-sans);
+  font-size: var(--fz-body);
+  font-weight: var(--fw-ui);
+  padding: 14px 24px;
+  border-radius: var(--r-button);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease),
+              background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+.btn-primary:hover { transform: scale(1.02); }
+.btn-secondary {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover { background: var(--surface-elevated); border-color: var(--fg); }
+.btn-ghost {
+  background: transparent;
+  color: var(--fg);
+}
+.btn-ghost:hover { background: var(--surface-elevated); }
+
+/* ──────────────────────────────────────────────────────────────
+   Cards
+   ────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--sp-4);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur) var(--ease);
+}
+.card:hover { border-color: var(--border-strong); }
+
+/* ──────────────────────────────────────────────────────────────
+   Inputs (editorial underline)
+   ────────────────────────────────────────────────────────────── */
+.input {
+  font-family: var(--font-sans);
+  font-size: var(--fz-body);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-strong);
+  padding: 12px 0;
+  color: var(--fg);
+  width: 100%;
+  outline: none;
+  transition: border-color var(--dur) var(--ease);
+}
+.input::placeholder { color: var(--fg-subtle); }
+.input:focus { border-bottom-color: var(--accent); }
+
+.input-filled {
+  background: var(--surface-elevated);
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding: 12px 14px;
+  border-radius: var(--r-input) var(--r-input) 0 0;
+}
+.input-filled:focus { border-bottom-color: var(--accent); }

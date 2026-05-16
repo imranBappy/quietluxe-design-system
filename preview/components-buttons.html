@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  .btn-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  .btn-row:first-of-type { border-top: 0; padding-top: 4px; }
+  .btn-row .variant {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg);
+  }
+  .btn-row .variant .sub {
+    display: block;
+    font-family: var(--font-sans);
+    color: var(--fg-subtle);
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .btn-row .specimens {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons (re-declared locally so the preview is self-contained) */
+  .b {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 11px 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    line-height: 1;
+    letter-spacing: -0.005em;
+  }
+  .b svg { width: 14px; height: 14px; stroke-width: 1.75; }
+
+  .b-primary    { background: #87A96B; color: #fff; }
+  .b-primary-hv { background: #7a9c5e; color: #fff; transform: scale(1.02); }
+  .b-disabled   { background: #E8E6E0; color: #9B9B9B; cursor: not-allowed; }
+
+  .b-secondary    { background: transparent; color: #1A1A1A; border-color: #D8D5CC; }
+  .b-secondary-hv { background: #F4F3EE; color: #1A1A1A; border-color: #1A1A1A; }
+
+  .b-ghost    { background: transparent; color: #1A1A1A; padding: 11px 14px; }
+  .b-ghost-hv { background: #F4F3EE; color: #1A1A1A; padding: 11px 14px; }
+
+  .b-dark     { background: #1A1A1A; color: #FAFAF7; padding: 9px 14px; font-size: 13px; }
+
+  .b-icon {
+    background: transparent;
+    color: #1A1A1A;
+    border-color: #E8E6E0;
+    padding: 9px;
+    border-radius: 8px;
+  }
+  .b-icon svg { width: 16px; height: 16px; }
+
+  .b-link {
+    background: transparent;
+    border: 0;
+    padding: 4px 0;
+    color: #1A1A1A;
+    border-radius: 0;
+    border-bottom: 1px solid #1A1A1A;
+  }
+
+  .state-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-subtle);
+    margin-left: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="card-frame">
+  <div class="between" style="margin-bottom:6px;">
+    <div class="tag">Buttons</div>
+    <div class="token-meta">Inter 500 · 14 / 1 · radius 8 · scale(1.02) hover</div>
+  </div>
+
+  <div class="btn-row">
+    <div class="variant">.btn-primary<span class="sub">accent fill</span></div>
+    <div class="specimens">
+      <button class="b b-primary"><span>Get started</span><i data-lucide="arrow-right"></i></button>
+      <button class="b b-primary-hv"><span>Get started</span><i data-lucide="arrow-right"></i></button>
+      <span class="state-tag">default · hover</span>
+      <button class="b b-disabled">Get started</button>
+      <span class="state-tag">disabled</span>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <div class="variant">.btn-secondary<span class="sub">hairline</span></div>
+    <div class="specimens">
+      <button class="b b-secondary">Learn more</button>
+      <button class="b b-secondary-hv">Learn more</button>
+      <span class="state-tag">default · hover</span>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <div class="variant">.btn-ghost<span class="sub">no chrome</span></div>
+    <div class="specimens">
+      <button class="b b-ghost"><span>Skip</span><i data-lucide="chevron-right"></i></button>
+      <button class="b b-ghost-hv"><span>Skip</span><i data-lucide="chevron-right"></i></button>
+      <button class="b b-link">Read manifesto</button>
+      <span class="state-tag">ghost · link</span>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <div class="variant">compact<span class="sub">nav · icon</span></div>
+    <div class="specimens">
+      <button class="b b-dark">Sign in</button>
+      <button class="b b-icon" aria-label="Search"><i data-lucide="search"></i></button>
+      <button class="b b-icon" aria-label="Bookmark"><i data-lucide="bookmark"></i></button>
+      <button class="b b-icon" aria-label="Share"><i data-lucide="arrow-up-right"></i></button>
+    </div>
+  </div>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>
